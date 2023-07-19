@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Poppins:wght@400;500&display=swap');
+
+:root{
+    --lg-font: 'Kaisei Decol', serif;
+    --sm-font: 'Poppins', sans-serif;
+}
+
+body{
+    font-family: var(--sm-font);
+}
+
+
+
+
