@@ -4,7 +4,7 @@ class BaseDeDatos{
         this.agregarRegistro(1,"arroz",100,"alimentos","arroz.jpg");
         this.agregarRegistro(2,"fideos",50,"alimentos","fideos.jpg");
         this.agregarRegistro(3,"alfajor",25,"alimentos","alfajor.jpg");
-        console.log(this.productos);
+        
     }
 
     agregarRegistro(id,nombre,precio,categoria,imagen){
@@ -18,8 +18,21 @@ class BaseDeDatos{
     }
 
     registroPorId(id){
-        return this.productos.find((producto) => producto === id);
+        return this.productos.find((producto) => producto.id === id);
 
+    }
+}
+
+class Carrito{
+    constructor(){
+        this.carrito =[];
+        this.total = 0;
+        this.totalProductos = 0;
+
+    }
+    
+    estaEnCarrito(productoCarrito){
+        return this.carrito.find((producto) => producto.id === productoCarrito.id);
     }
 }
 
@@ -49,9 +62,20 @@ function cargarProductos(){
             <h2>${producto.nombre}</h2>
             <p>${producto.precio}</p>
             <img src="img/${producto.imagen}" widht ="150" />
-            <p><a href="#">Agregar al carrito</a></p>
+            <p><a href="#" class = "btnAgregar" data-id = "${producto.id}">Agregar al carrito</a></p>
         </div>
         `;
+    }
+
+    const botonesAgregar = document.querySelectorAll(".btnAgregar");
+    for(const boton of botonesAgregar){
+       boton.addEventListener("click", (event) =>{
+        event.preventDefault();
+        const id = Number(boton.dataset.id);
+        const producto = bd.registroPorId(id);
+        
+
+       }); 
     }
 
 }
