@@ -32,25 +32,28 @@ class Producto {
     // Muestro el loading
     mostrarLoading();
     const response = await fetch(
-      `https://api.mercadolibre.com/sites/MLA/search?category=${categoria}&limit=${limiteProductos}&offset=0`
+      `https://pokeapi.co/api/v2/pokemon/1`
     );
     const api = await response.json();
-    const productosMercadoLibre = api.results; // Este es el array de productos de ML
+    
+    // const productosMercadoLibre = api.results; // Este es el array de productos de ML
     // Vamos a convertir los objetos de productos de ML a nuestra clase Productos,
     // para hacerlos compatible con nuestro carrito. Simplemente instanciamos objetos
     // de la clase molde Productos con los atributos de ML y los guardamos en un array
     productos = [];
-    for (const productoMercadoLibre of productosMercadoLibre) {
-      productos.push(
-        new Producto(
-          productoMercadoLibre.id,
-          productoMercadoLibre.title.slice(0, 20) + "...",
-          productoMercadoLibre.price,
-          productoMercadoLibre.category_id,
-          productoMercadoLibre.thumbnail_id
-        )
-      );
-    }
+    productos.push(new Producto(api.order, api.name));
+    console.log(productos);
+    // for (const productoMercadoLibre of productosMercadoLibre) {
+    //   productos.push(
+    //     new Producto(
+    //       productoMercadoLibre.id,
+    //       productoMercadoLibre.title.slice(0, 20) + "...",
+    //       productoMercadoLibre.price,
+    //       productoMercadoLibre.category_id,
+    //       productoMercadoLibre.thumbnail_id
+    //     )
+    //   );
+    // }
     cargarProductos(productos);
     Swal.close(); // Cierro el loading
   }
