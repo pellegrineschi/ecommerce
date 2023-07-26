@@ -11,8 +11,8 @@ class Producto {
     constructor(id, nombre, precio, categoria, imagen = false) {
       this.id = id;
       this.nombre = nombre;
-      this.precio = precio;
-      this.categoria = categoria;
+      // this.precio = precio;
+      // this.categoria = categoria;
       this.imagen = imagen;
     }
   }
@@ -41,7 +41,7 @@ class Producto {
     // para hacerlos compatible con nuestro carrito. Simplemente instanciamos objetos
     // de la clase molde Productos con los atributos de ML y los guardamos en un array
     productos = [];
-    productos.push(new Producto(api.order, api.name));
+    productos.push(new Producto(api.order, api.name, api.sprites.other.dream_world.front_default));
     console.log(productos);
     // for (const productoMercadoLibre of productosMercadoLibre) {
     //   productos.push(
@@ -66,7 +66,7 @@ class Producto {
       `https://api.mercadolibre.com/sites/MLA/search?category=${categoriaSeleccionada}&q=${nombre}&limit=${limiteProductos}&offset=0`
     );
     const api = await response.json();
-    const productosMercadoLibre = api.results; // Este es el array de productos de ML
+    const productosMercadoLibre = api.results; // Este es el array de productos de ML 
     console.log(productosMercadoLibre);
     // Vamos a convertir los objetos de productos de ML a nuestra clase Productos,
     // para hacerlos compatible con nuestro carrito. Simplemente instanciamos objetos
