@@ -19,19 +19,38 @@
     />
     <!-- Nuestro CSS -->
     <link rel="stylesheet" href="styles.css" />
+    
   </head>
   <body>
     <!-- Productos -->
     <main>
       <form id="formBuscar">
-        <input type="text" id="inputBuscar" value="" placeholder="Buscar producto..." />
+        <input
+          type="text"
+          id="inputBuscar"
+          value=""
+          placeholder="Buscar producto..."
+        />
       </form>
       <ul id="categorias">
         <li>
-          <a href="#" class="btn btnCategoria seleccionado" data-categoria="MLA1652">Notebooks</a>
+          <a
+            href="#"
+            class="btn btnCategoria seleccionado"
+            data-categoria="MLA1652"
+            >Notebooks</a
+          >
         </li>
-        <li><a href="#" class="btn btnCategoria" data-categoria="MLA1658">Placas de Video</a></li>
-        <li><a href="#" class="btn btnCategoria" data-categoria="MLA1693">Procesadores</a></li>
+        <li>
+          <a href="#" class="btn btnCategoria" data-categoria="MLA1658"
+            >Placas de Video</a
+          >
+        </li>
+        <li>
+          <a href="#" class="btn btnCategoria" data-categoria="MLA1693"
+            >Procesadores</a
+          >
+        </li>
       </ul>
       <div id="productos">
         <!-- Acá van a ir los productos que tengamos en la base de datos -->
@@ -53,7 +72,11 @@
     <!-- Librería Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Toastify -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    
     <!-- Nuestra aplicación -->
     <script src="script.js"></script>
   </body>
