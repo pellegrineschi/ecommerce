@@ -1,12 +1,4 @@
-/*
-Objetivos:
-- Categorías (filtrado) ✅
-- Usar asincronía (fetch): ✅
-  - Opción 1: Cargar un archivo .json local con NUESTROS productos ✅
-  - Opción 2: Usar una API como la de Mercado Libre ✅
-*/
-
-// Clase "molde" para los productos
+// Clase para los productos
 class Producto {
   constructor(id, nombre, precio, categoria, imagen = false) {
     this.id = id;
@@ -37,8 +29,7 @@ async function apiProductosPorCategoria(categoria = categoriaSeleccionada) {
   const api = await response.json();
   const productosMercadoLibre = api.results; // Este es el array de productos de ML
   // Vamos a convertir los objetos de productos de ML a nuestra clase Productos,
-  // para hacerlos compatible con nuestro carrito. Simplemente instanciamos objetos
-  // de la clase molde Productos con los atributos de ML y los guardamos en un array
+  // para hacerlos compatible con nuestro carrito.  
   productos = [];
   for (const productoMercadoLibre of productosMercadoLibre) {
     productos.push(
@@ -66,8 +57,7 @@ async function apiProductosPorNombre(nombre) {
   const productosMercadoLibre = api.results; // Este es el array de productos de ML
   console.log(productosMercadoLibre);
   // Vamos a convertir los objetos de productos de ML a nuestra clase Productos,
-  // para hacerlos compatible con nuestro carrito. Simplemente instanciamos objetos
-  // de la clase molde Productos con los atributos de ML y los guardamos en un array
+  // para hacerlos compatible con nuestro carrito.
   productos = [];
   for (const productoMercadoLibre of productosMercadoLibre) {
     productos.push(
@@ -132,9 +122,8 @@ function cargarProductos(productos) {
   // Recorremos todos los productos y lo agregamos al div #productos
   for (const producto of productos) {
     // A cada div lo agregamos un botón de Agregar al carrito, y a ese botón le pasamos
-    // el atributo data-id, con el id del producto. Eso después nos va a ser muy útil
-    // para saber desde que producto estamos haciendo click
-    divProductos.innerHTML += `
+    // el atributo data-id, con el id del producto. 
+        divProductos.innerHTML += `
         <div class="producto">
             <h2>${producto.nombre}</h2>
             <p class="precio">$${producto.precio}</p>
@@ -145,8 +134,8 @@ function cargarProductos(productos) {
         </div>
     `;
   }
-  // Botones agregar al carrito: como no sabemos cuántos productos hay en nuestra base de datos,
-  // buscamos TODOS los botones que hayamos renderizado recién, y los recorremos uno por uno
+  // Botones agregar al carrito
+  
   const botonesAgregar = document.querySelectorAll(".btnAgregar");
   for (const boton of botonesAgregar) {
     // Le agregamos un evento click a cada uno
@@ -212,8 +201,7 @@ class Carrito {
     }).showToast();
   }
 
-  // Verificamos si el producto está en el carrito. Usamos desectruración en el parámetro:
-  // recibimos el objeto producto en el parámetro pero solo usamos la propiedad id
+  // Verificamos si el producto está en el carrito.
   estaEnCarrito({ id }) {
     return this.carrito.find((producto) => producto.id === id);
   }
@@ -226,9 +214,7 @@ class Carrito {
     divCarrito.innerHTML = "";
     // Recorremos todos los productos del carrito y lo agregamos al div #carrito
     for (const producto of this.carrito) {
-      // A cada div lo agregamos un botón de Quitar del carrito, y a ese botón le pasamos
-      // el atributo data-id, con el id del producto. Eso después nos va a ser muy útil
-      // para saber desde que producto estamos haciendo click
+      
       divCarrito.innerHTML += `
         <div class="productoCarrito">
             <h2>${producto.nombre}</h2>
@@ -247,8 +233,7 @@ class Carrito {
     } else {
       botonComprar.classList.add("oculto"); // Oculto el botón
     }
-    // Botones de quitar: como no sabemos cuántos productos hay en el carrito,
-    // buscamos TODOS los botones que hayamos renderizado recién, y los recorremos uno por uno
+    // Botones de quitar
     const botonesQuitar = document.querySelectorAll(".btnQuitar");
     for (const boton of botonesQuitar) {
       // Le agregamos un evento onclick a cada uno
